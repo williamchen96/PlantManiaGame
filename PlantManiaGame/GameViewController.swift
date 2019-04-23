@@ -18,8 +18,8 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        current_plant.image = UIImage(named: Lilac.third_stage)
-        plant_age.text = String(Lilac.age) + " Days Old"
+        current_plant.image = UIImage(named: Cactus.third_stage)
+        plant_age.text = String(Cactus.age) + " Days Old"
 
     }
 
