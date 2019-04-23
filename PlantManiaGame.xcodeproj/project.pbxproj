@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9EE9E1E7226F60A3004F2F9E /* PlantClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE9E1E6226F60A3004F2F9E /* PlantClasses.swift */; };
 		A97C5299226E3DBB00A036F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97C5298226E3DBB00A036F5 /* AppDelegate.swift */; };
-		A97C529B226E3DBB00A036F5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A97C529A226E3DBB00A036F5 /* GameScene.sks */; };
-		A97C529D226E3DBB00A036F5 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A97C529C226E3DBB00A036F5 /* Actions.sks */; };
-		A97C529F226E3DBB00A036F5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97C529E226E3DBB00A036F5 /* GameScene.swift */; };
 		A97C52A1226E3DBB00A036F5 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97C52A0226E3DBB00A036F5 /* GameViewController.swift */; };
 		A97C52A4226E3DBB00A036F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97C52A2226E3DBB00A036F5 /* Main.storyboard */; };
 		A97C52A6226E3DBC00A036F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A97C52A5226E3DBC00A036F5 /* Assets.xcassets */; };
@@ -37,11 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9EE9E1E6226F60A3004F2F9E /* PlantClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantClasses.swift; sourceTree = "<group>"; };
 		A97C5295226E3DBB00A036F5 /* PlantManiaGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlantManiaGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A97C5298226E3DBB00A036F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A97C529A226E3DBB00A036F5 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		A97C529C226E3DBB00A036F5 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		A97C529E226E3DBB00A036F5 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		A97C52A0226E3DBB00A036F5 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		A97C52A3226E3DBB00A036F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A97C52A5226E3DBC00A036F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,14 +100,12 @@
 			isa = PBXGroup;
 			children = (
 				A97C5298226E3DBB00A036F5 /* AppDelegate.swift */,
-				A97C529A226E3DBB00A036F5 /* GameScene.sks */,
-				A97C529C226E3DBB00A036F5 /* Actions.sks */,
-				A97C529E226E3DBB00A036F5 /* GameScene.swift */,
 				A97C52A0226E3DBB00A036F5 /* GameViewController.swift */,
 				A97C52A2226E3DBB00A036F5 /* Main.storyboard */,
 				A97C52A5226E3DBC00A036F5 /* Assets.xcassets */,
 				A97C52A7226E3DBC00A036F5 /* LaunchScreen.storyboard */,
 				A97C52AA226E3DBC00A036F5 /* Info.plist */,
+				9EE9E1E6226F60A3004F2F9E /* PlantClasses.swift */,
 			);
 			path = PlantManiaGame;
 			sourceTree = "<group>";
@@ -239,10 +233,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A97C52A4226E3DBB00A036F5 /* Main.storyboard in Resources */,
-				A97C529B226E3DBB00A036F5 /* GameScene.sks in Resources */,
 				A97C52A6226E3DBC00A036F5 /* Assets.xcassets in Resources */,
 				A97C52A9226E3DBC00A036F5 /* LaunchScreen.storyboard in Resources */,
-				A97C529D226E3DBB00A036F5 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,8 +259,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A97C529F226E3DBB00A036F5 /* GameScene.swift in Sources */,
 				A97C52A1226E3DBB00A036F5 /* GameViewController.swift in Sources */,
+				9EE9E1E7226F60A3004F2F9E /* PlantClasses.swift in Sources */,
 				A97C5299226E3DBB00A036F5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
