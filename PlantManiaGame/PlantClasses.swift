@@ -32,3 +32,5 @@ class Plant {
 let Cactus = Plant(plant_name: "Cactus", max_water: 10, current_water: 10, first_stage: "pot", second_stage: "plant1", third_stage: "plant3", age: 0)
 
 let Sunflower = Plant(plant_name: "Sunflower", max_water: 10, current_water: 10, first_stage: "pot", second_stage: "plant1", third_stage: "plant3", age: 0)
+
+let Lilac = Plant(plant_name: "Lilac", max_water: 10, current_water: 10, first_stage: "pot", second_stage: "sprout", third_stage: "lilac", age: 0)
