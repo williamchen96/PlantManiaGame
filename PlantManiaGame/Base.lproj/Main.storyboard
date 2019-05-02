@@ -130,6 +130,7 @@
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                     <connections>
+                        <outlet property="add_garden" destination="AVi-UW-1qy" id="MAN-U0-CCO"/>
                         <outlet property="current_plant" destination="pFp-fu-sRo" id="aad-dM-2yo"/>
                         <outlet property="incubator_view" destination="3se-qz-xqx" id="ERf-mE-0Jd"/>
                         <outlet property="maturity_bar" destination="T7L-YA-S1h" id="Hcd-uz-Pve"/>
