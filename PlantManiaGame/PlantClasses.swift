@@ -16,6 +16,7 @@ class Plant {
     var second_stage: String!
     var third_stage: String!
     var age: Int!
+    init(){}
     
     init(plant_name: String, max_water: Int, current_water: Int, seed: String, first_stage: String, second_stage: String, third_stage: String, age: Int){
         
@@ -38,3 +39,7 @@ let Sunflower = Plant(plant_name: "Sunflower", max_water: 10, current_water: 10,
 let Lilac = Plant(plant_name: "Lilac", max_water: 10, current_water: 10, seed: "sunflower-seed-clipart-1", first_stage: "pot", second_stage: "sprout", third_stage: "lilac", age: 0)
 
 let Rose = Plant(plant_name: "Rose", max_water: 10, current_water: 10, seed: "sunflower-seed-clipart-1", first_stage: "pot", second_stage: "sprout", third_stage: "rose", age: 0)
+
+//struct GlobalVariables {
+//    static var allPlants = Array<Plant>()
+//}
