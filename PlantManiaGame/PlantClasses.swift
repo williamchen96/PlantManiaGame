@@ -46,7 +46,7 @@ class Cactus: Plant{
         self.first_stage = "pot"
         self.second_stage = "sprout"
         self.third_stage = "cactus"
-        self.age = 10
+        self.age = 0
     }
 }
 
@@ -61,7 +61,7 @@ class Sunflower: Plant{
         self.first_stage = "pot"
         self.second_stage = "sprout"
         self.third_stage = "sunflower"
-        self.age = 10
+        self.age = 0
     }
 }
 
@@ -76,7 +76,7 @@ class Lilac: Plant{
         self.first_stage = "pot"
         self.second_stage = "sprout"
         self.third_stage = "lilac"
-        self.age = 10
+        self.age = 0
     }
 }
 
@@ -91,7 +91,7 @@ class Rose: Plant{
         self.first_stage = "pot"
         self.second_stage = "sprout"
         self.third_stage = "rose"
-        self.age = 10
+        self.age = 0
     }
 }
 
