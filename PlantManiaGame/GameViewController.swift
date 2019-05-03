@@ -14,43 +14,49 @@ protocol GameProtocol{
 
 class GameViewController: UIViewController {
     
-    //var allPlants = GlobalVariables.allPlants
+    let defaults = UserDefaults.standard
     var allPlants = Array<Plant>()
-    var indexOfPlant: Int  = 0
+    var indexOfPlant: Int = 0
     var gardenPlants = Array<Plant>()
     var fullyGrown = false
     
    
     @IBOutlet weak var incubator_view: UIView!
-//    @IBOutlet weak var garden_view: UIView!
-//    @IBOutlet weak var store_view: UIView!
     
     @IBOutlet weak var current_plant: UIImageView!
+    @IBOutlet weak var plant_name: UILabel!
     @IBOutlet weak var plant_age: UILabel!
     @IBOutlet weak var maturity_bar: UIProgressView!
     @IBOutlet weak var add_garden: UIButton!
+    @IBOutlet weak var time_away: UILabel!
     
+    //next plant in array
     @IBAction func next_button(_ sender: Any) {
         if(indexOfPlant < allPlants.count - 1 ){
             indexOfPlant += 1
             current_plant.image = currentStage(myPlant: allPlants[indexOfPlant])
+            plant_name.text = allPlants[indexOfPlant].plant_name
             plant_age.text = String(allPlants[indexOfPlant].age) + " Days Old"
             maturity_bar.progress = Float(allPlants[indexOfPlant].age) * 0.1
             
             //checks if plant is fully grown
             fullyGrown = checkFullyGrown(myPlant: allPlants[indexOfPlant])
+            //defaults.set(indexOfPlant, forKey: "myIndex")
         }
     }
     
+    //previous plant in array
     @IBAction func back_button(_ sender: Any) {
         if(indexOfPlant != 0){
             indexOfPlant -= 1
             current_plant.image = currentStage(myPlant: allPlants[indexOfPlant])
+            plant_name.text = allPlants[indexOfPlant].plant_name
             plant_age.text = String(allPlants[indexOfPlant].age) + " Days Old"
             maturity_bar.progress = Float(allPlants[indexOfPlant].age) * 0.1
             
             //checks if plant is fully grown
             fullyGrown = checkFullyGrown(myPlant: allPlants[indexOfPlant])
+            //defaults.set(indexOfPlant, forKey: "myIndex")
         }
     }
     
@@ -64,6 +70,24 @@ class GameViewController: UIViewController {
         
         //adds to the garden plant array
         gardenPlants.append(allPlants[indexOfPlant])
+        
+        allPlants.remove(at: indexOfPlant)
+        if (indexOfPlant > (allPlants.count - 1)){
+            indexOfPlant = (allPlants.count - 1)
+        }
+        current_plant.image = currentStage(myPlant: allPlants[indexOfPlant])
+        plant_name.text = allPlants[indexOfPlant].plant_name
+        plant_age.text = String(allPlants[indexOfPlant].age) + " Days Old"
+        maturity_bar.progress = Float(allPlants[indexOfPlant].age) * 0.1
+        
+        //checks if plant is fully grown
+        fullyGrown = checkFullyGrown(myPlant: allPlants[indexOfPlant])
+        defaults.set(indexOfPlant, forKey: "myIndex")
+
+        
+//        let encodedGardenPlants: Data = NSKeyedArchiver.archivedData(withRootObject: gardenPlants)
+//        defaults.set(encodedGardenPlants, forKey: "defaultGardenPlants")
+//        defaults.synchronize()
         
     }
     
@@ -85,7 +109,7 @@ class GameViewController: UIViewController {
     
     //function to hide and unhide add_garden button
     func checkFullyGrown(myPlant: Plant) -> Bool{
-        if (myPlant.age! == 10){
+        if (myPlant.age! >= 10){
             add_garden.isHidden = false
             return true
         }
@@ -93,9 +117,15 @@ class GameViewController: UIViewController {
         return false
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //load default values
+        
+        //let decodedGarden  = defaults.data(forKey: "defaultGardenPlants")
+        //let decodedGardenPlants = NSKeyedUnarchiver.unarchiveObject(with: decodedGarden!) as! [Plant]
+        //self.gardenPlants = decodedGardenPlants
+        //self.indexOfPlant = defaults.integer(forKey: "myIndex")
         
         //hardcoded test plants
         allPlants.append(Rose())
@@ -105,13 +135,31 @@ class GameViewController: UIViewController {
         allPlants.append(Rose())
         allPlants.append(Lilac())
         allPlants.append(Sunflower())
-
-        allPlants[0].age = 2
-        allPlants[1].age = 5
-        allPlants[2].age = 8
+        
+        allPlants[0].age = 9
+        allPlants[1].age = 9
+        allPlants[4].age = 3
+        allPlants[5].age = 5
+        allPlants[6].age = 10
+        
+        //calculates time away and ages plants
+        if let date2 = defaults.object(forKey: "date") as? Date {
+            let seconds = Date().timeIntervalSince(date2)
+            let minutes = Int(seconds)/60
+            time_away.text = "Time away: " + String(minutes) + " days"
+            
+            for plant in allPlants{
+                plant.age += minutes
+            }
+        }
+        
+        let date = Date()
+        defaults.set(date, forKey: "date")
+     
         
         //displays image and age of first plant upon loading app
         current_plant.image = currentStage(myPlant: allPlants[indexOfPlant])
+        plant_name.text = allPlants[indexOfPlant].plant_name
         plant_age.text = String(allPlants[indexOfPlant].age) + " Days Old"
         maturity_bar.progressTintColor = .blue
         maturity_bar.transform = maturity_bar.transform.scaledBy(x: 1, y: 8)
@@ -127,6 +175,7 @@ class GameViewController: UIViewController {
             else {
                 return
             }
+        
         gardenViewController.garden_plants = gardenPlants
     }
     
