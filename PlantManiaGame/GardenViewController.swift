@@ -40,6 +40,7 @@ class GardenViewController: UIViewController {
         super.viewDidLoad()
         if(garden_plants.count == 0){
             plant_name.text = "No plants in garden!"
+            plant_number.text = "Go add more plants!"
         }
         else{
             plant_name.text = garden_plants[0].plant_name

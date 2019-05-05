@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class Plant {
+class Plant: NSObject, NSCoding {
     var plant_name: String!
     var max_water: Int!
     var current_water: Int!
@@ -16,9 +16,29 @@ class Plant {
     var second_stage: String!
     var third_stage: String!
     var age: Int!
+    var price: Int!
     
-    init(){
+    override init(){
         
+    }
+
+    // MARK: NSCoding
+    required convenience init?(coder decoder: NSCoder) {
+     
+        self.init()
+        
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.plant_name, forKey: "plant_name")
+        aCoder.encode(self.max_water, forKey: "max_water")
+        aCoder.encode(self.current_water, forKey: "current_water")
+        aCoder.encode(self.seed, forKey: "seed")
+        aCoder.encode(self.first_stage, forKey: "first_stage")
+        aCoder.encode(self.second_stage, forKey: "second_stage")
+        aCoder.encode(self.third_stage, forKey: "third_stage")
+        aCoder.encode(age, forKey: "age")
+        aCoder.encode(self.price, forKey: "price")
     }
     
 //    init(plant_name: String, max_water: Int, current_water: Int, seed: String, first_stage: String, second_stage: String, third_stage: String, age: Int){
@@ -47,6 +67,7 @@ class Cactus: Plant{
         self.second_stage = "sprout"
         self.third_stage = "cactus"
         self.age = 0
+        self.price = 5
     }
 }
 
@@ -62,6 +83,7 @@ class Sunflower: Plant{
         self.second_stage = "sprout"
         self.third_stage = "sunflower"
         self.age = 0
+        self.price = 4
     }
 }
 
@@ -77,6 +99,7 @@ class Lilac: Plant{
         self.second_stage = "sprout"
         self.third_stage = "lilac"
         self.age = 0
+        self.price = 6
     }
 }
 
@@ -92,6 +115,7 @@ class Rose: Plant{
         self.second_stage = "sprout"
         self.third_stage = "rose"
         self.age = 0
+        self.price = 5
     }
 }
 

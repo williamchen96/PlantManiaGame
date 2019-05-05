@@ -19,6 +19,9 @@ class GameViewController: UIViewController {
     var indexOfPlant: Int = 0
     var gardenPlants = Array<Plant>()
     var fullyGrown = false
+    var wallet: Int = 0
+    var ageArray = Array<Int>()
+    var waterArray = Array<Int>()
     
    
     @IBOutlet weak var incubator_view: UIView!
@@ -28,19 +31,20 @@ class GameViewController: UIViewController {
     @IBOutlet weak var plant_age: UILabel!
     @IBOutlet weak var maturity_bar: UIProgressView!
     @IBOutlet weak var add_garden: UIButton!
+    @IBOutlet weak var sell_plant: UIButton!
     @IBOutlet weak var time_away: UILabel!
     
     //next plant in array
     @IBAction func next_button(_ sender: Any) {
         if(indexOfPlant < allPlants.count - 1 ){
             indexOfPlant += 1
-            current_plant.image = currentStage(myPlant: allPlants[indexOfPlant])
-            plant_name.text = allPlants[indexOfPlant].plant_name
-            plant_age.text = String(allPlants[indexOfPlant].age) + " Days Old"
-            maturity_bar.progress = Float(allPlants[indexOfPlant].age) * 0.1
-            
-            //checks if plant is fully grown
-            fullyGrown = checkFullyGrown(myPlant: allPlants[indexOfPlant])
+
+            if(allPlants.count == 0){
+                emptyIncubator()
+            }
+            else{
+                displayPlantInfo(myPlant: allPlants[indexOfPlant])
+            }
             //defaults.set(indexOfPlant, forKey: "myIndex")
         }
     }
@@ -49,13 +53,13 @@ class GameViewController: UIViewController {
     @IBAction func back_button(_ sender: Any) {
         if(indexOfPlant != 0){
             indexOfPlant -= 1
-            current_plant.image = currentStage(myPlant: allPlants[indexOfPlant])
-            plant_name.text = allPlants[indexOfPlant].plant_name
-            plant_age.text = String(allPlants[indexOfPlant].age) + " Days Old"
-            maturity_bar.progress = Float(allPlants[indexOfPlant].age) * 0.1
-            
-            //checks if plant is fully grown
-            fullyGrown = checkFullyGrown(myPlant: allPlants[indexOfPlant])
+
+            if(allPlants.count == 0){
+                emptyIncubator()
+            }
+            else{
+                displayPlantInfo(myPlant: allPlants[indexOfPlant])
+            }
             //defaults.set(indexOfPlant, forKey: "myIndex")
         }
     }
@@ -65,6 +69,7 @@ class GameViewController: UIViewController {
         let addGardenPopUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID")as! IncubatorPopUpViewController
         self.addChild(addGardenPopUpVC)
         addGardenPopUpVC.view.frame = self.view.frame
+        addGardenPopUpVC.alertLable.text = "Successfully added plant to garden!"
         self.view.addSubview(addGardenPopUpVC.view)
         addGardenPopUpVC.didMove(toParent: self)
         
@@ -75,20 +80,78 @@ class GameViewController: UIViewController {
         if (indexOfPlant > (allPlants.count - 1)){
             indexOfPlant = (allPlants.count - 1)
         }
-        current_plant.image = currentStage(myPlant: allPlants[indexOfPlant])
-        plant_name.text = allPlants[indexOfPlant].plant_name
-        plant_age.text = String(allPlants[indexOfPlant].age) + " Days Old"
-        maturity_bar.progress = Float(allPlants[indexOfPlant].age) * 0.1
         
-        //checks if plant is fully grown
+        if(allPlants.count == 0){
+            emptyIncubator()
+        }
+        else{
+            displayPlantInfo(myPlant: allPlants[indexOfPlant])
+        }
+        
+        //defaults.set(indexOfPlant, forKey: "myIndex")
+        
+        //remove from ageArray
+//        ageArray.remove(at: indexOfPlant)
+//        defaults.set(ageArray, forKey: "ageArray")
+        
+        //update the user default all plants array
+        let encodedAllPlants: Data = NSKeyedArchiver.archivedData(withRootObject: allPlants)
+        defaults.set(encodedAllPlants, forKey: "defaultAllPlants")
+        defaults.synchronize()
+        
+        //update the user default garden plants array
+        let encodedGardenPlants: Data = NSKeyedArchiver.archivedData(withRootObject: gardenPlants)
+        defaults.set(encodedGardenPlants, forKey: "defaultGardenPlants")
+        defaults.synchronize()
+        
+    }
+    @IBAction func sell_plant(_ sender: Any) {
+        let addGardenPopUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID")as! IncubatorPopUpViewController
+        self.addChild(addGardenPopUpVC)
+        addGardenPopUpVC.view.frame = self.view.frame
+        addGardenPopUpVC.alertLable.text = "Successfully sold plant! You earned " + String(allPlants[indexOfPlant].price) + " coins"
+        self.view.addSubview(addGardenPopUpVC.view)
+        addGardenPopUpVC.didMove(toParent: self)
+        
+        wallet += allPlants[indexOfPlant].price
+        
+        allPlants.remove(at: indexOfPlant)
+        if (indexOfPlant > (allPlants.count - 1)){
+            indexOfPlant = (allPlants.count - 1)
+        }
+        
+        if(allPlants.count == 0){
+            emptyIncubator()
+        }
+        else{
+            displayPlantInfo(myPlant: allPlants[indexOfPlant])
+        }
+        
+        //remove from ageArray
+//        ageArray.remove(at: indexOfPlant)
+//        defaults.set(ageArray, forKey: "ageArray")
+        
+        //defaults.set(indexOfPlant, forKey: "myIndex")
+        defaults.set(wallet, forKey: "myWallet")
+        
+        //update the user default all plants array
+        let encodedAllPlants: Data = NSKeyedArchiver.archivedData(withRootObject: allPlants)
+        defaults.set(encodedAllPlants, forKey: "defaultAllPlants")
+        defaults.synchronize()
+        
+    }
+    
+    func displayPlantInfo(myPlant: Plant){
+        
+        //displays image and age of first plant upon loading app
+        self.current_plant.image = currentStage(myPlant: myPlant)
+        self.plant_name.text = myPlant.plant_name
+        self.plant_age.text = String(myPlant.age) + " Days Old"
+        self.maturity_bar.progressTintColor = .blue
+        self.maturity_bar.progress = Float(myPlant.age) * 0.1
+        
+        //checks if fully grown
         fullyGrown = checkFullyGrown(myPlant: allPlants[indexOfPlant])
-        defaults.set(indexOfPlant, forKey: "myIndex")
-
-        
-//        let encodedGardenPlants: Data = NSKeyedArchiver.archivedData(withRootObject: gardenPlants)
-//        defaults.set(encodedGardenPlants, forKey: "defaultGardenPlants")
-//        defaults.synchronize()
-        
     }
     
     //displays current stage of plant
@@ -107,13 +170,25 @@ class GameViewController: UIViewController {
         return UIImage(named: "sunflower-seed-clipart-1")!
     }
     
+    func emptyIncubator(){
+        self.current_plant.image = nil
+        self.plant_name.text = "No plant in Incubator!"
+        self.plant_age.text = nil
+        self.maturity_bar.progressTintColor = .blue
+        self.maturity_bar.progress = 0
+        add_garden.isHidden = true
+        sell_plant.isHidden = true
+    }
+    
     //function to hide and unhide add_garden button
     func checkFullyGrown(myPlant: Plant) -> Bool{
         if (myPlant.age! >= 10){
             add_garden.isHidden = false
+            sell_plant.isHidden = false
             return true
         }
         add_garden.isHidden = true
+        sell_plant.isHidden = true
         return false
     }
     
@@ -121,26 +196,38 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         //load default values
-        
-        //let decodedGarden  = defaults.data(forKey: "defaultGardenPlants")
-        //let decodedGardenPlants = NSKeyedUnarchiver.unarchiveObject(with: decodedGarden!) as! [Plant]
-        //self.gardenPlants = decodedGardenPlants
+        if let decodedIncubator  = defaults.data(forKey: "defaultAllPlants"){
+            let decodedIncubatorPlants = NSKeyedUnarchiver.unarchiveObject(with: decodedIncubator) as! [Plant]
+            self.allPlants = decodedIncubatorPlants
+        }
+
+        if let decodedGarden  = defaults.data(forKey: "defaultGardenPlants"){
+            let decodedGardenPlants = NSKeyedUnarchiver.unarchiveObject(with: decodedGarden) as! [Plant]
+            self.gardenPlants = decodedGardenPlants
+        }
         //self.indexOfPlant = defaults.integer(forKey: "myIndex")
-        
+        self.wallet = defaults.integer(forKey: "myWallet")
+        //self.ageArray = defaults.object(forKey: "ageArray") as? [Int] ?? [Int]()
+
         //hardcoded test plants
-        allPlants.append(Rose())
-        allPlants.append(Sunflower())
-        allPlants.append(Lilac())
-        allPlants.append(Cactus())
-        allPlants.append(Rose())
-        allPlants.append(Lilac())
-        allPlants.append(Sunflower())
-        
-        allPlants[0].age = 9
-        allPlants[1].age = 9
-        allPlants[4].age = 3
-        allPlants[5].age = 5
-        allPlants[6].age = 10
+//        allPlants.removeAll()
+//        gardenPlants.removeAll()
+
+//       allPlants.append(Rose())
+//        allPlants.append(Rose())
+//        allPlants.append(Rose())
+//        allPlants.append(Sunflower())
+//        allPlants.append(Lilac())
+//        allPlants.append(Cactus())
+//        allPlants.append(Rose())
+//        allPlants.append(Cactus())
+//
+//
+//        allPlants[0].age = 0
+//        allPlants[1].age = 5
+//       allPlants[2].age = 10
+
+     
         
         //calculates time away and ages plants
         if let date2 = defaults.object(forKey: "date") as? Date {
@@ -149,37 +236,55 @@ class GameViewController: UIViewController {
             time_away.text = "Time away: " + String(minutes) + " days"
             
             for plant in allPlants{
-                plant.age += minutes
+                plant.age += Int(minutes)
             }
+            
         }
         
         let date = Date()
         defaults.set(date, forKey: "date")
-     
         
-        //displays image and age of first plant upon loading app
-        current_plant.image = currentStage(myPlant: allPlants[indexOfPlant])
-        plant_name.text = allPlants[indexOfPlant].plant_name
-        plant_age.text = String(allPlants[indexOfPlant].age) + " Days Old"
-        maturity_bar.progressTintColor = .blue
+        let encodedAllPlants: Data = NSKeyedArchiver.archivedData(withRootObject: allPlants)
+        defaults.set(encodedAllPlants, forKey: "defaultAllPlants")
+        defaults.synchronize()
+        
         maturity_bar.transform = maturity_bar.transform.scaledBy(x: 1, y: 8)
-        maturity_bar.progress = Float(allPlants[indexOfPlant].age) * 0.1
         
-        //checks if plant is fully grown
-        fullyGrown = checkFullyGrown(myPlant: allPlants[indexOfPlant])
+        if(allPlants.count == 0){
+            emptyIncubator()
+        }
+        else{
+            displayPlantInfo(myPlant: allPlants[indexOfPlant])
+        }
     }
     
-    //segue to new VC
+    //segue to new Garden VC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let gardenViewController = segue.destination as? GardenViewController
-            else {
-                return
-            }
         
-        gardenViewController.garden_plants = gardenPlants
+        if segue.identifier == "storeSegue" {
+            let controller = segue.destination as! StoreViewController
+            controller.walletInt = self.wallet
+        } else if segue.identifier == "gardenSegue" {
+            let controller = segue.destination as! GardenViewController
+            controller.garden_plants = self.gardenPlants
+        }
+        
+
     }
     
-    @IBAction func cancel(_ unwindSegue: UIStoryboardSegue) {}
+    @IBAction func cancel(_ unwindSegue: UIStoryboardSegue) {
+        let encodedAllPlants: Data = NSKeyedArchiver.archivedData(withRootObject: allPlants)
+        defaults.set(encodedAllPlants, forKey: "defaultAllPlants")
+        defaults.synchronize()
+        
+        if(allPlants.count != 0){
+            indexOfPlant = 0
+            displayPlantInfo(myPlant: allPlants[indexOfPlant])
+        }
+        else{
+            emptyIncubator()
+        }
+    }
 
 }
 
