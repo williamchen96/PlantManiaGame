@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E069EA12280AA81002F72BA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E069EA02280AA81002F72BA /* AVFoundation.framework */; };
+		9E069EA32280B12D002F72BA /* Cheerful-Garden.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9E069EA22280B12D002F72BA /* Cheerful-Garden.mp3 */; };
 		9E383EB8227ABC9A001CF10A /* IncubatorPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E383EB7227ABC9A001CF10A /* IncubatorPopUpViewController.swift */; };
 		9ED32CAF22725569006C7D26 /* GardenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED32CAE22725569006C7D26 /* GardenViewController.swift */; };
 		9ED32CB1227255DA006C7D26 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED32CB0227255DA006C7D26 /* StoreViewController.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E069EA02280AA81002F72BA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9E069EA22280B12D002F72BA /* Cheerful-Garden.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Cheerful-Garden.mp3"; path = "../../../../Downloads/Cheerful-Garden.mp3"; sourceTree = "<group>"; };
 		9E383EB7227ABC9A001CF10A /* IncubatorPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncubatorPopUpViewController.swift; sourceTree = "<group>"; };
 		9ED32CAE22725569006C7D26 /* GardenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenViewController.swift; sourceTree = "<group>"; };
 		9ED32CB0227255DA006C7D26 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E069EA12280AA81002F72BA /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E069E9F2280AA81002F72BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E069EA02280AA81002F72BA /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A97C528C226E3DBB00A036F5 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +102,7 @@
 				A97C52B2226E3DBC00A036F5 /* PlantManiaGameTests */,
 				A97C52BD226E3DBC00A036F5 /* PlantManiaGameUITests */,
 				A97C5296226E3DBB00A036F5 /* Products */,
+				9E069E9F2280AA81002F72BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +119,7 @@
 		A97C5297226E3DBB00A036F5 /* PlantManiaGame */ = {
 			isa = PBXGroup;
 			children = (
+				9E069EA22280B12D002F72BA /* Cheerful-Garden.mp3 */,
 				9ED32CAE22725569006C7D26 /* GardenViewController.swift */,
 				A97C5298226E3DBB00A036F5 /* AppDelegate.swift */,
 				A97C52A0226E3DBB00A036F5 /* GameViewController.swift */,
@@ -242,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A97C52A4226E3DBB00A036F5 /* Main.storyboard in Resources */,
+				9E069EA32280B12D002F72BA /* Cheerful-Garden.mp3 in Resources */,
 				A97C52A6226E3DBC00A036F5 /* Assets.xcassets in Resources */,
 				A97C52A9226E3DBC00A036F5 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -449,6 +465,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 48TA9Q2SWA;
 				INFOPLIST_FILE = PlantManiaGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -466,6 +483,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 48TA9Q2SWA;
 				INFOPLIST_FILE = PlantManiaGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

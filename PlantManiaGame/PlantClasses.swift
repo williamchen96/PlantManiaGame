@@ -26,18 +26,19 @@ class Plant: NSObject, NSCoding {
     required convenience init?(coder decoder: NSCoder) {
      
         self.init()
-        
+        self.age = decoder.decodeInteger(forKey: "age")
+        self.current_water = decoder.decodeInteger(forKey: "current_water")
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.plant_name, forKey: "plant_name")
         aCoder.encode(self.max_water, forKey: "max_water")
-        aCoder.encode(self.current_water, forKey: "current_water")
+        aCoder.encodeCInt(Int32(current_water), forKey: "current_water")
         aCoder.encode(self.seed, forKey: "seed")
         aCoder.encode(self.first_stage, forKey: "first_stage")
         aCoder.encode(self.second_stage, forKey: "second_stage")
         aCoder.encode(self.third_stage, forKey: "third_stage")
-        aCoder.encode(age, forKey: "age")
+        aCoder.encodeCInt(Int32(age), forKey: "age")
         aCoder.encode(self.price, forKey: "price")
     }
     
@@ -61,8 +62,8 @@ class Cactus: Plant{
         
         self.plant_name = "Cactus"
         self.max_water = 10
-        self.current_water = 10
-        self.seed = "sunflower-seed-clipart-1"
+        self.current_water = 0
+        self.seed = "cactus_seed"
         self.first_stage = "pot"
         self.second_stage = "sprout"
         self.third_stage = "cactus"
@@ -77,8 +78,8 @@ class Sunflower: Plant{
         
         self.plant_name = "Sunflower"
         self.max_water = 10
-        self.current_water = 10
-        self.seed = "sunflower-seed-clipart-1"
+        self.current_water = 0
+        self.seed = "sunflower_seed"
         self.first_stage = "pot"
         self.second_stage = "sprout"
         self.third_stage = "sunflower"
@@ -93,8 +94,8 @@ class Lilac: Plant{
         
         self.plant_name = "Lilac"
         self.max_water = 10
-        self.current_water = 10
-        self.seed = "sunflower-seed-clipart-1"
+        self.current_water = 0
+        self.seed = "lilac_seed"
         self.first_stage = "pot"
         self.second_stage = "sprout"
         self.third_stage = "lilac"
@@ -109,8 +110,8 @@ class Rose: Plant{
         
         self.plant_name = "Rose"
         self.max_water = 10
-        self.current_water = 10
-        self.seed = "sunflower-seed-clipart-1"
+        self.current_water = 0
+        self.seed = "rose_seed"
         self.first_stage = "pot"
         self.second_stage = "sprout"
         self.third_stage = "rose"
