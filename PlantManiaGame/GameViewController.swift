@@ -249,18 +249,18 @@ class GameViewController: UIViewController {
 //        allPlants.removeAll()
 //        gardenPlants.removeAll()
 
-//       allPlants.append(Rose())
+       allPlants.append(Rose())
 //        allPlants.append(Rose())
 //        allPlants.append(Rose())
-//        allPlants.append(Sunflower())
+        allPlants.append(Sunflower())
 //        allPlants.append(Lilac())
 //        allPlants.append(Cactus())
 //        allPlants.append(Rose())
 //        allPlants.append(Cactus())
 //
 //
-//        allPlants[0].age = 0
-//        allPlants[1].age = 5
+        allPlants[0].age = 10
+        allPlants[1].age = 10
 //       allPlants[2].age = 10
         //allPlants[0].current_water = 10
 
