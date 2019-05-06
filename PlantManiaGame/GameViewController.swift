@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol GameProtocol{
     
@@ -22,6 +23,7 @@ class GameViewController: UIViewController {
     var wallet: Int = 0
     var ageArray = Array<Int>()
     var waterArray = Array<Int>()
+    var audioPlayer = AVAudioPlayer()
     
    
     @IBOutlet weak var incubator_view: UIView!
@@ -33,6 +35,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var add_garden: UIButton!
     @IBOutlet weak var sell_plant: UIButton!
     @IBOutlet weak var time_away: UILabel!
+    @IBOutlet weak var water_bar: UIProgressView!
     
     //next plant in array
     @IBAction func next_button(_ sender: Any) {
@@ -62,6 +65,22 @@ class GameViewController: UIViewController {
             }
             //defaults.set(indexOfPlant, forKey: "myIndex")
         }
+    }
+    
+    //click to water plant
+    @IBAction func water_plant(_ sender: Any) {
+        if(allPlants[indexOfPlant].current_water + 5 > 10){
+            allPlants[indexOfPlant].current_water = 10
+        }
+        else{
+            allPlants[indexOfPlant].current_water += 5
+        }
+        displayPlantInfo(myPlant: allPlants[indexOfPlant])
+        
+        let encodedAllPlants: Data = NSKeyedArchiver.archivedData(withRootObject: allPlants)
+        defaults.set(encodedAllPlants, forKey: "defaultAllPlants")
+        defaults.synchronize()
+        
     }
     
     //adds a fully mature plant to garden
@@ -149,6 +168,8 @@ class GameViewController: UIViewController {
         self.plant_age.text = String(myPlant.age) + " Days Old"
         self.maturity_bar.progressTintColor = .blue
         self.maturity_bar.progress = Float(myPlant.age) * 0.1
+        self.water_bar.progressTintColor = .blue
+        self.water_bar.progress = Float(myPlant.current_water) * 0.1
         
         //checks if fully grown
         fullyGrown = checkFullyGrown(myPlant: allPlants[indexOfPlant])
@@ -176,6 +197,7 @@ class GameViewController: UIViewController {
         self.plant_age.text = nil
         self.maturity_bar.progressTintColor = .blue
         self.maturity_bar.progress = 0
+        self.water_bar.progress = 0
         add_garden.isHidden = true
         sell_plant.isHidden = true
     }
@@ -195,10 +217,24 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let sound = Bundle.main.path(forResource: "Cheerful-Garden", ofType: "mp3")
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+            audioPlayer.prepareToPlay()
+            audioPlayer.numberOfLoops = -1
+            audioPlayer.play()
+        }
+        catch {
+            print(error)
+        }
+        
         //load default values
         if let decodedIncubator  = defaults.data(forKey: "defaultAllPlants"){
             let decodedIncubatorPlants = NSKeyedUnarchiver.unarchiveObject(with: decodedIncubator) as! [Plant]
             self.allPlants = decodedIncubatorPlants
+            print("Loading plants")
+            //print(allPlants.count)
+            //print(allPlants[0].age)
         }
 
         if let decodedGarden  = defaults.data(forKey: "defaultGardenPlants"){
@@ -208,7 +244,7 @@ class GameViewController: UIViewController {
         //self.indexOfPlant = defaults.integer(forKey: "myIndex")
         self.wallet = defaults.integer(forKey: "myWallet")
         //self.ageArray = defaults.object(forKey: "ageArray") as? [Int] ?? [Int]()
-
+        //wallet = 50
         //hardcoded test plants
 //        allPlants.removeAll()
 //        gardenPlants.removeAll()
@@ -226,17 +262,24 @@ class GameViewController: UIViewController {
 //        allPlants[0].age = 0
 //        allPlants[1].age = 5
 //       allPlants[2].age = 10
+        //allPlants[0].current_water = 10
 
      
         
         //calculates time away and ages plants
         if let date2 = defaults.object(forKey: "date") as? Date {
             let seconds = Date().timeIntervalSince(date2)
-            let minutes = Int(seconds)/60
-            time_away.text = "Time away: " + String(minutes) + " days"
+            let minutes = Int(seconds)/15
+            time_away.text = "Time away: " + String(Int(minutes)) + " days"
             
             for plant in allPlants{
                 plant.age += Int(minutes)
+                if (plant.current_water - Int(minutes) < 0){
+                    plant.current_water = 0
+                }
+                else{
+                    plant.current_water -= Int(minutes)
+                }
             }
             
         }
@@ -249,6 +292,9 @@ class GameViewController: UIViewController {
         defaults.synchronize()
         
         maturity_bar.transform = maturity_bar.transform.scaledBy(x: 1, y: 8)
+        
+        water_bar.transform = CGAffineTransform(rotationAngle: .pi / -2)
+        water_bar.transform = water_bar.transform.scaledBy(x: 1, y: 8)
         
         if(allPlants.count == 0){
             emptyIncubator()

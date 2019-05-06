@@ -78,7 +78,7 @@ class StoreViewController: UIViewController {
     }
     
     func displaySeed(){
-        seed_image.image = UIImage(named: allSeeds[indexOfSeed].third_stage)
+        seed_image.image = UIImage(named: allSeeds[indexOfSeed].seed)
         seed_name.text = allSeeds[indexOfSeed].plant_name
         seed_price.text = "Price: " + String(allSeeds[indexOfSeed].price)
     }
