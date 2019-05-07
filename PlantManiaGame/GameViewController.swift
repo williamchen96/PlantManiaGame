@@ -20,10 +20,13 @@ class GameViewController: UIViewController {
     var indexOfPlant: Int = 0
     var gardenPlants = Array<Plant>()
     var fullyGrown = false
-    var wallet: Int = 0
+    var wallet: Int = 50
     var ageArray = Array<Int>()
     var waterArray = Array<Int>()
     var audioPlayer = AVAudioPlayer()
+    var waterAudio = AVAudioPlayer()
+    var walletAudio = AVAudioPlayer()
+
     
    
     @IBOutlet weak var incubator_view: UIView!
@@ -69,11 +72,19 @@ class GameViewController: UIViewController {
     
     //click to water plant
     @IBAction func water_plant(_ sender: Any) {
+        let waterSound = Bundle.main.path(forResource: "water", ofType: "mp3")
+        do {
+            waterAudio = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: waterSound!))
+        } catch {
+            print(error)
+        }
         if(allPlants[indexOfPlant].current_water + 5 > 10){
             allPlants[indexOfPlant].current_water = 10
+            waterAudio.play()
         }
         else{
             allPlants[indexOfPlant].current_water += 5
+            waterAudio.play()
         }
         displayPlantInfo(myPlant: allPlants[indexOfPlant])
         
@@ -131,6 +142,14 @@ class GameViewController: UIViewController {
         addGardenPopUpVC.alertLable.text = "Successfully sold plant! You earned " + String(allPlants[indexOfPlant].price) + " coins"
         self.view.addSubview(addGardenPopUpVC.view)
         addGardenPopUpVC.didMove(toParent: self)
+        
+        let cashSound = Bundle.main.path(forResource: "Chaching", ofType: "mp3")
+        do {
+            walletAudio = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: cashSound!))
+        } catch {
+            print(error)
+        }
+        walletAudio.play()
         
         wallet += allPlants[indexOfPlant].price
         
@@ -217,9 +236,9 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let sound = Bundle.main.path(forResource: "Cheerful-Garden", ofType: "mp3")
+        let backgroundSound = Bundle.main.path(forResource: "Cheerful-Garden", ofType: "mp3")
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: backgroundSound!))
             audioPlayer.prepareToPlay()
             audioPlayer.numberOfLoops = -1
             audioPlayer.play()
@@ -249,18 +268,18 @@ class GameViewController: UIViewController {
 //        allPlants.removeAll()
 //        gardenPlants.removeAll()
 
-       allPlants.append(Rose())
+//       allPlants.append(Rose())
 //        allPlants.append(Rose())
 //        allPlants.append(Rose())
-        allPlants.append(Sunflower())
+//        allPlants.append(Sunflower())
 //        allPlants.append(Lilac())
 //        allPlants.append(Cactus())
 //        allPlants.append(Rose())
 //        allPlants.append(Cactus())
 //
 //
-        allPlants[0].age = 10
-        allPlants[1].age = 10
+//        allPlants[0].age = 0
+//        allPlants[1].age = 5
 //       allPlants[2].age = 10
         //allPlants[0].current_water = 10
 
