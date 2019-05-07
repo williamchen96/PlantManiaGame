@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9CEDE80A2280D6250046E275 /* Cheerful-Garden.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CEDE8092280D6250046E275 /* Cheerful-Garden.mp3 */; };
+		9CEDE80E2280E8060046E275 /* Chaching.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CEDE80D2280E8050046E275 /* Chaching.mp3 */; };
+		9CEDE8102280EDE90046E275 /* water.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CEDE80F2280EDE80046E275 /* water.mp3 */; };
 		9E069EA12280AA81002F72BA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E069EA02280AA81002F72BA /* AVFoundation.framework */; };
-		9E069EA32280B12D002F72BA /* Cheerful-Garden.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9E069EA22280B12D002F72BA /* Cheerful-Garden.mp3 */; };
 		9E383EB8227ABC9A001CF10A /* IncubatorPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E383EB7227ABC9A001CF10A /* IncubatorPopUpViewController.swift */; };
 		9ED32CAF22725569006C7D26 /* GardenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED32CAE22725569006C7D26 /* GardenViewController.swift */; };
 		9ED32CB1227255DA006C7D26 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED32CB0227255DA006C7D26 /* StoreViewController.swift */; };
@@ -40,8 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9CEDE8092280D6250046E275 /* Cheerful-Garden.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Cheerful-Garden.mp3"; path = "../../Cheerful-Garden.mp3"; sourceTree = "<group>"; };
+		9CEDE80D2280E8050046E275 /* Chaching.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Chaching.mp3; path = ../../Chaching.mp3; sourceTree = "<group>"; };
+		9CEDE80F2280EDE80046E275 /* water.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = water.mp3; path = ../../water.mp3; sourceTree = "<group>"; };
 		9E069EA02280AA81002F72BA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		9E069EA22280B12D002F72BA /* Cheerful-Garden.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Cheerful-Garden.mp3"; path = "../../../../Downloads/Cheerful-Garden.mp3"; sourceTree = "<group>"; };
 		9E383EB7227ABC9A001CF10A /* IncubatorPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncubatorPopUpViewController.swift; sourceTree = "<group>"; };
 		9ED32CAE22725569006C7D26 /* GardenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenViewController.swift; sourceTree = "<group>"; };
 		9ED32CB0227255DA006C7D26 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +123,9 @@
 		A97C5297226E3DBB00A036F5 /* PlantManiaGame */ = {
 			isa = PBXGroup;
 			children = (
-				9E069EA22280B12D002F72BA /* Cheerful-Garden.mp3 */,
+				9CEDE80F2280EDE80046E275 /* water.mp3 */,
+				9CEDE80D2280E8050046E275 /* Chaching.mp3 */,
+				9CEDE8092280D6250046E275 /* Cheerful-Garden.mp3 */,
 				9ED32CAE22725569006C7D26 /* GardenViewController.swift */,
 				A97C5298226E3DBB00A036F5 /* AppDelegate.swift */,
 				A97C52A0226E3DBB00A036F5 /* GameViewController.swift */,
@@ -257,8 +263,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A97C52A4226E3DBB00A036F5 /* Main.storyboard in Resources */,
-				9E069EA32280B12D002F72BA /* Cheerful-Garden.mp3 in Resources */,
+				9CEDE80A2280D6250046E275 /* Cheerful-Garden.mp3 in Resources */,
+				9CEDE8102280EDE90046E275 /* water.mp3 in Resources */,
 				A97C52A6226E3DBC00A036F5 /* Assets.xcassets in Resources */,
+				9CEDE80E2280E8060046E275 /* Chaching.mp3 in Resources */,
 				A97C52A9226E3DBC00A036F5 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
