@@ -8,24 +8,7 @@
 
 import UIKit
 
-class GardenViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    //Collection View
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return garden_plants.count
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "plantCell", for: indexPath)
-        cell.backgroundColor = UIColor.white
-        //cell.imageView.image = UIImage(named: "rose.png")
-        return cell
-        
-        //if(current_index < garden_plants.count - 1 ){
-        //    current_index += 1
-        //    cell.imageView.image  = plant_image.image = UIImage( named: garden_plants[current_index].third_stage)
-        //}
-    }
-    
+class GardenViewController: UIViewController {
 
     var garden_plants = Array<Plant>()
     var current_index = 0
@@ -35,9 +18,7 @@ class GardenViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var plant_image: UIImageView!
     @IBOutlet weak var plant_number: UILabel!
     
-    //Collection View
-    @IBOutlet weak var collectionView: UICollectionView!
-    
+   
     @IBAction func next_plants(_ sender: Any) {
         if(current_index < garden_plants.count - 1 ){
             current_index += 1
@@ -56,13 +37,17 @@ class GardenViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
+    @IBAction func takePhoto(_ sender: UIButton) {
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, UIScreen.main.scale)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Collection View
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
         if(garden_plants.count == 0){
             plant_name.text = "No plants in garden!"
             plant_number.text = "Go add more plants!"
