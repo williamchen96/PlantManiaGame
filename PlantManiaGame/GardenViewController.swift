@@ -12,6 +12,7 @@ class GardenViewController: UIViewController {
 
     var garden_plants = Array<Plant>()
     var current_index = 0
+    var wallet: Int = 0
 
     @IBOutlet weak var plant_name: UILabel!
     @IBOutlet weak var plant_image: UIImageView!
@@ -59,6 +60,16 @@ class GardenViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "plantGameSegue" {
+            let controller = segue.destination as! PlantGameViewController
+            controller.wallet = self.wallet
+        }
+        
+    }
+    
+    @IBAction func cancel(_ unwindSegue: UIStoryboardSegue) {
+    }
 
     /*
     // MARK: - Navigation

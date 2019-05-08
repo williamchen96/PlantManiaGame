@@ -265,8 +265,8 @@ class GameViewController: UIViewController {
         //self.ageArray = defaults.object(forKey: "ageArray") as? [Int] ?? [Int]()
         //wallet = 50
         //hardcoded test plants
-//        allPlants.removeAll()
-//        gardenPlants.removeAll()
+        allPlants.removeAll()
+        gardenPlants.removeAll()
 
 //       allPlants.append(Rose())
 //        allPlants.append(Rose())
@@ -278,10 +278,6 @@ class GameViewController: UIViewController {
 //        allPlants.append(Cactus())
 //
 //
-//        allPlants[0].age = 0
-//        allPlants[1].age = 5
-//       allPlants[2].age = 10
-        //allPlants[0].current_water = 10
 
      
         
@@ -329,11 +325,17 @@ class GameViewController: UIViewController {
         if segue.identifier == "storeSegue" {
             let controller = segue.destination as! StoreViewController
             controller.walletInt = self.wallet
-        } else if segue.identifier == "gardenSegue" {
-            let controller = segue.destination as! GardenViewController
-            controller.garden_plants = self.gardenPlants
         }
         
+        else if segue.identifier == "gardenSegue" {
+            let controller = segue.destination as! GardenViewController
+            controller.garden_plants = self.gardenPlants
+            controller.wallet = self.wallet
+        }
+        
+        else{
+            
+        }
 
     }
     
