@@ -244,15 +244,15 @@ class GameViewController: UIViewController {
         //self.indexOfPlant = defaults.integer(forKey: "myIndex")
         self.wallet = defaults.integer(forKey: "myWallet")
         //self.ageArray = defaults.object(forKey: "ageArray") as? [Int] ?? [Int]()
-        //wallet = 50
-        //hardcoded test plants
-        allPlants.removeAll()
-        gardenPlants.removeAll()
+        
+        
+        ////////////////////////////////////////hardcoded test plants/////////////////////////////////
+        wallet = 50
+        //allPlants.removeAll()
+        //gardenPlants.removeAll()
 
-//       allPlants.append(Rose())
-//        allPlants.append(Rose())
-//        allPlants.append(Rose())
-//        allPlants.append(Sunflower())
+        //allPlants.append(Rose())
+        //allPlants.append(Sunflower())
 //        allPlants.append(Lilac())
 //        allPlants.append(Cactus())
 //        allPlants.append(Rose())
@@ -263,13 +263,13 @@ class GameViewController: UIViewController {
 //        allPlants[1].age = 10
 //       allPlants[2].age = 10
         //allPlants[0].current_water = 10
+        ////////////////////////////////////////hardcoded test plants/////////////////////////////////
 
-     
         
         //calculates time away and ages plants
         if let date2 = defaults.object(forKey: "date") as? Date {
             let seconds = Date().timeIntervalSince(date2)
-            let minutes = Int(seconds)/15
+            let minutes = Int(seconds)/10
             time_away.text = "Time away: " + String(Int(minutes)) + " days"
             
             for plant in allPlants{
