@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class StoreViewController: UIViewController {
     
@@ -16,6 +17,7 @@ class StoreViewController: UIViewController {
     var walletInt: Int = 0
     var popupText: String = ""
     let defaults = UserDefaults.standard
+    var audio = AVAudioPlayer()
     
     
     @IBOutlet weak var walletAmount: UILabel!
@@ -47,6 +49,13 @@ class StoreViewController: UIViewController {
             incubatorPlants.append(allSeeds[indexOfSeed])
             walletInt-=allSeeds[indexOfSeed].price
             walletAmount.text = String (walletInt)
+            let cashSound = Bundle.main.path(forResource: "Chaching", ofType: "mp3")
+            do {
+                audio = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: cashSound!))
+            } catch {
+                print(error)
+            }
+            audio.play()
             popupText = "New " + allSeeds[indexOfSeed].plant_name + " seed purchased!"
         }
         

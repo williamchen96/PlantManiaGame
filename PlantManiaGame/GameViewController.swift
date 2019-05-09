@@ -24,6 +24,8 @@ class GameViewController: UIViewController {
     var ageArray = Array<Int>()
     var waterArray = Array<Int>()
     var audioPlayer = AVAudioPlayer()
+    var waterAudio = AVAudioPlayer()
+    var walletAudio = AVAudioPlayer()
     
    
     @IBOutlet weak var incubator_view: UIView!
@@ -69,11 +71,19 @@ class GameViewController: UIViewController {
     
     //click to water plant
     @IBAction func water_plant(_ sender: Any) {
+        let waterSound = Bundle.main.path(forResource: "water", ofType: "mp3")
+        do {
+            waterAudio = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: waterSound!))
+        } catch {
+            print(error)
+        }
         if(allPlants[indexOfPlant].current_water + 5 > 10){
             allPlants[indexOfPlant].current_water = 10
+            waterAudio.play()
         }
         else{
             allPlants[indexOfPlant].current_water += 5
+            waterAudio.play()
         }
         displayPlantInfo(myPlant: allPlants[indexOfPlant])
         
@@ -81,6 +91,20 @@ class GameViewController: UIViewController {
         defaults.set(encodedAllPlants, forKey: "defaultAllPlants")
         defaults.synchronize()
         
+    }
+    
+    @IBAction func buy_fertilizer(_ sender: Any) {
+        if (allPlants[indexOfPlant].age! < 10) {
+            let addGardenPopUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID")as! IncubatorPopUpViewController
+            self.addChild(addGardenPopUpVC)
+            addGardenPopUpVC.view.frame = self.view.frame
+            addGardenPopUpVC.alertLable.text = "Successfully bought fertilizer!"
+            self.view.addSubview(addGardenPopUpVC.view)
+            addGardenPopUpVC.didMove(toParent: self)
+            allPlants[indexOfPlant].age = 10
+            displayPlantInfo(myPlant: allPlants[indexOfPlant])
+            wallet -= 4
+        }
     }
     
     //adds a fully mature plant to garden
@@ -131,6 +155,15 @@ class GameViewController: UIViewController {
         addGardenPopUpVC.alertLable.text = "Successfully sold plant! You earned " + String(allPlants[indexOfPlant].price) + " coins"
         self.view.addSubview(addGardenPopUpVC.view)
         addGardenPopUpVC.didMove(toParent: self)
+        
+        let cashSound = Bundle.main.path(forResource: "Chaching", ofType: "mp3")
+        do {
+            walletAudio = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: cashSound!))
+        } catch {
+            print(error)
+        }
+        walletAudio.play()
+
         
         wallet += allPlants[indexOfPlant].price
         
@@ -242,14 +275,20 @@ class GameViewController: UIViewController {
             self.gardenPlants = decodedGardenPlants
         }
         //self.indexOfPlant = defaults.integer(forKey: "myIndex")
+        
         self.wallet = defaults.integer(forKey: "myWallet")
+
         //self.ageArray = defaults.object(forKey: "ageArray") as? [Int] ?? [Int]()
         
         
         ////////////////////////////////////////hardcoded test plants/////////////////////////////////
-        wallet = 50
+        //wallet = 100
         //allPlants.removeAll()
-        //gardenPlants.removeAll()
+//        gardenPlants.removeAll()
+//        
+//        let encodedGardenPlants: Data = NSKeyedArchiver.archivedData(withRootObject: gardenPlants)
+//        defaults.set(encodedGardenPlants, forKey: "defaultGardenPlants")
+//        defaults.synchronize()
 
         //allPlants.append(Rose())
         //allPlants.append(Sunflower())
@@ -269,7 +308,8 @@ class GameViewController: UIViewController {
         //calculates time away and ages plants
         if let date2 = defaults.object(forKey: "date") as? Date {
             let seconds = Date().timeIntervalSince(date2)
-            let minutes = Int(seconds)/10
+            let minutes = Int(seconds)/3
+            
             time_away.text = "Time away: " + String(Int(minutes)) + " days"
             
             for plant in allPlants{

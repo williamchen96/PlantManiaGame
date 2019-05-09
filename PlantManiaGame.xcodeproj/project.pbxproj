@@ -14,6 +14,8 @@
 		9E069F3622814000002F72BA /* PlantGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E069F3522814000002F72BA /* PlantGameViewController.swift */; };
 		9E383EB8227ABC9A001CF10A /* IncubatorPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E383EB7227ABC9A001CF10A /* IncubatorPopUpViewController.swift */; };
 		9E96E18E2283533F00778A71 /* PlantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E96E18D2283533F00778A71 /* PlantCollectionViewCell.swift */; };
+		9E96E19122835CD100778A71 /* Chaching.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9E96E18F22835CD100778A71 /* Chaching.mp3 */; };
+		9E96E19222835CD100778A71 /* water.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9E96E19022835CD100778A71 /* water.mp3 */; };
 		9ED32CAF22725569006C7D26 /* GardenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED32CAE22725569006C7D26 /* GardenViewController.swift */; };
 		9ED32CB1227255DA006C7D26 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED32CB0227255DA006C7D26 /* StoreViewController.swift */; };
 		9EE9E1E7226F60A3004F2F9E /* PlantClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE9E1E6226F60A3004F2F9E /* PlantClasses.swift */; };
@@ -51,6 +53,8 @@
 		9E069F3522814000002F72BA /* PlantGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantGameViewController.swift; sourceTree = "<group>"; };
 		9E383EB7227ABC9A001CF10A /* IncubatorPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncubatorPopUpViewController.swift; sourceTree = "<group>"; };
 		9E96E18D2283533F00778A71 /* PlantCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantCollectionViewCell.swift; path = ../../../../Downloads/PlantCollectionViewCell.swift; sourceTree = "<group>"; };
+		9E96E18F22835CD100778A71 /* Chaching.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Chaching.mp3; path = ../../../../Downloads/Chaching.mp3; sourceTree = "<group>"; };
+		9E96E19022835CD100778A71 /* water.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = water.mp3; path = ../../../../Downloads/water.mp3; sourceTree = "<group>"; };
 		9ED32CAE22725569006C7D26 /* GardenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenViewController.swift; sourceTree = "<group>"; };
 		9ED32CB0227255DA006C7D26 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		9EE9E1E6226F60A3004F2F9E /* PlantClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantClasses.swift; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				9E069EA22280B12D002F72BA /* Cheerful-Garden.mp3 */,
+				9E96E18F22835CD100778A71 /* Chaching.mp3 */,
+				9E96E19022835CD100778A71 /* water.mp3 */,
 				9ED32CAE22725569006C7D26 /* GardenViewController.swift */,
 				9E96E18D2283533F00778A71 /* PlantCollectionViewCell.swift */,
 				A97C5298226E3DBB00A036F5 /* AppDelegate.swift */,
@@ -271,8 +277,10 @@
 				A97C52A4226E3DBB00A036F5 /* Main.storyboard in Resources */,
 				9E069EF222813639002F72BA /* GameScene.sks in Resources */,
 				9E069EA32280B12D002F72BA /* Cheerful-Garden.mp3 in Resources */,
+				9E96E19222835CD100778A71 /* water.mp3 in Resources */,
 				A97C52A6226E3DBC00A036F5 /* Assets.xcassets in Resources */,
 				A97C52A9226E3DBC00A036F5 /* LaunchScreen.storyboard in Resources */,
+				9E96E19122835CD100778A71 /* Chaching.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
