@@ -18,7 +18,10 @@ class StoreViewController: UIViewController {
     var popupText: String = ""
     let defaults = UserDefaults.standard
     var audio = AVAudioPlayer()
+<<<<<<< HEAD
     
+=======
+>>>>>>> 45f37edcf4fdcdd80446528682f66381c522c9fe
     
     @IBOutlet weak var walletAmount: UILabel!
     @IBOutlet weak var seed_name: UILabel!
@@ -57,6 +60,7 @@ class StoreViewController: UIViewController {
             }
             audio.play()
             popupText = "New " + allSeeds[indexOfSeed].plant_name + " seed purchased!"
+            
         }
         
         else{
@@ -71,6 +75,7 @@ class StoreViewController: UIViewController {
         addGardenPopUpVC.didMove(toParent: self)
         
         defaults.set(walletInt, forKey: "myWallet")
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

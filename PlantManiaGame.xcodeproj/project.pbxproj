@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9CEDE80A2280D6250046E275 /* Cheerful-Garden.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CEDE8092280D6250046E275 /* Cheerful-Garden.mp3 */; };
+		9CEDE80E2280E8060046E275 /* Chaching.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CEDE80D2280E8050046E275 /* Chaching.mp3 */; };
+		9CEDE8102280EDE90046E275 /* water.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CEDE80F2280EDE80046E275 /* water.mp3 */; };
 		9E069EA12280AA81002F72BA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E069EA02280AA81002F72BA /* AVFoundation.framework */; };
+
 		9E069EA32280B12D002F72BA /* Cheerful-Garden.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9E069EA22280B12D002F72BA /* Cheerful-Garden.mp3 */; };
 		9E069EF222813639002F72BA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9E069EF122813639002F72BA /* GameScene.sks */; };
 		9E069EF422813668002F72BA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E069EF322813668002F72BA /* GameScene.swift */; };
 		9E069F3622814000002F72BA /* PlantGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E069F3522814000002F72BA /* PlantGameViewController.swift */; };
+
 		9E383EB8227ABC9A001CF10A /* IncubatorPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E383EB7227ABC9A001CF10A /* IncubatorPopUpViewController.swift */; };
 		9E96E18E2283533F00778A71 /* PlantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E96E18D2283533F00778A71 /* PlantCollectionViewCell.swift */; };
 		9E96E19122835CD100778A71 /* Chaching.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9E96E18F22835CD100778A71 /* Chaching.mp3 */; };
@@ -46,11 +51,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9CEDE8092280D6250046E275 /* Cheerful-Garden.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Cheerful-Garden.mp3"; path = "../../Cheerful-Garden.mp3"; sourceTree = "<group>"; };
+		9CEDE80D2280E8050046E275 /* Chaching.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Chaching.mp3; path = ../../Chaching.mp3; sourceTree = "<group>"; };
+		9CEDE80F2280EDE80046E275 /* water.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = water.mp3; path = ../../water.mp3; sourceTree = "<group>"; };
 		9E069EA02280AA81002F72BA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+
 		9E069EA22280B12D002F72BA /* Cheerful-Garden.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Cheerful-Garden.mp3"; path = "../../../../Downloads/Cheerful-Garden.mp3"; sourceTree = "<group>"; };
 		9E069EF122813639002F72BA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		9E069EF322813668002F72BA /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		9E069F3522814000002F72BA /* PlantGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantGameViewController.swift; sourceTree = "<group>"; };
+
+
 		9E383EB7227ABC9A001CF10A /* IncubatorPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncubatorPopUpViewController.swift; sourceTree = "<group>"; };
 		9E96E18D2283533F00778A71 /* PlantCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantCollectionViewCell.swift; path = ../../../../Downloads/PlantCollectionViewCell.swift; sourceTree = "<group>"; };
 		9E96E18F22835CD100778A71 /* Chaching.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Chaching.mp3; path = ../../../../Downloads/Chaching.mp3; sourceTree = "<group>"; };
@@ -131,9 +142,15 @@
 		A97C5297226E3DBB00A036F5 /* PlantManiaGame */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				9E069EA22280B12D002F72BA /* Cheerful-Garden.mp3 */,
 				9E96E18F22835CD100778A71 /* Chaching.mp3 */,
 				9E96E19022835CD100778A71 /* water.mp3 */,
+=======
+				9CEDE80F2280EDE80046E275 /* water.mp3 */,
+				9CEDE80D2280E8050046E275 /* Chaching.mp3 */,
+				9CEDE8092280D6250046E275 /* Cheerful-Garden.mp3 */,
+>>>>>>> 45f37edcf4fdcdd80446528682f66381c522c9fe
 				9ED32CAE22725569006C7D26 /* GardenViewController.swift */,
 				9E96E18D2283533F00778A71 /* PlantCollectionViewCell.swift */,
 				A97C5298226E3DBB00A036F5 /* AppDelegate.swift */,
@@ -275,10 +292,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				A97C52A4226E3DBB00A036F5 /* Main.storyboard in Resources */,
+
 				9E069EF222813639002F72BA /* GameScene.sks in Resources */,
+<<<<<<< HEAD
 				9E069EA32280B12D002F72BA /* Cheerful-Garden.mp3 in Resources */,
 				9E96E19222835CD100778A71 /* water.mp3 in Resources */,
+=======
+
+				9CEDE80A2280D6250046E275 /* Cheerful-Garden.mp3 in Resources */,
+				9CEDE8102280EDE90046E275 /* water.mp3 in Resources */,
+>>>>>>> 45f37edcf4fdcdd80446528682f66381c522c9fe
 				A97C52A6226E3DBC00A036F5 /* Assets.xcassets in Resources */,
+				9CEDE80E2280E8060046E275 /* Chaching.mp3 in Resources */,
 				A97C52A9226E3DBC00A036F5 /* LaunchScreen.storyboard in Resources */,
 				9E96E19122835CD100778A71 /* Chaching.mp3 in Resources */,
 			);

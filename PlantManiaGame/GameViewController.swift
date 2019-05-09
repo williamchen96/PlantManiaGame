@@ -20,12 +20,16 @@ class GameViewController: UIViewController {
     var indexOfPlant: Int = 0
     var gardenPlants = Array<Plant>()
     var fullyGrown = false
-    var wallet: Int = 0
+    var wallet: Int = 50
     var ageArray = Array<Int>()
     var waterArray = Array<Int>()
     var audioPlayer = AVAudioPlayer()
     var waterAudio = AVAudioPlayer()
     var walletAudio = AVAudioPlayer()
+<<<<<<< HEAD
+=======
+
+>>>>>>> 45f37edcf4fdcdd80446528682f66381c522c9fe
     
    
     @IBOutlet weak var incubator_view: UIView!
@@ -163,7 +167,10 @@ class GameViewController: UIViewController {
             print(error)
         }
         walletAudio.play()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 45f37edcf4fdcdd80446528682f66381c522c9fe
         
         wallet += allPlants[indexOfPlant].price
         
@@ -250,9 +257,9 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let sound = Bundle.main.path(forResource: "Cheerful-Garden", ofType: "mp3")
+        let backgroundSound = Bundle.main.path(forResource: "Cheerful-Garden", ofType: "mp3")
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: backgroundSound!))
             audioPlayer.prepareToPlay()
             audioPlayer.numberOfLoops = -1
             audioPlayer.play()
@@ -298,11 +305,14 @@ class GameViewController: UIViewController {
 //        allPlants.append(Cactus())
 //
 //
+<<<<<<< HEAD
 //        allPlants[0].age = 10
 //        allPlants[1].age = 10
 //       allPlants[2].age = 10
         //allPlants[0].current_water = 10
         ////////////////////////////////////////hardcoded test plants/////////////////////////////////
+=======
+>>>>>>> 45f37edcf4fdcdd80446528682f66381c522c9fe
 
         
         //calculates time away and ages plants
