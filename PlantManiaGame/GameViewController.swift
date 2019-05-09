@@ -26,7 +26,10 @@ class GameViewController: UIViewController {
     var audioPlayer = AVAudioPlayer()
     var waterAudio = AVAudioPlayer()
     var walletAudio = AVAudioPlayer()
+<<<<<<< HEAD
+=======
 
+>>>>>>> 45f37edcf4fdcdd80446528682f66381c522c9fe
     
    
     @IBOutlet weak var incubator_view: UIView!
@@ -94,6 +97,20 @@ class GameViewController: UIViewController {
         
     }
     
+    @IBAction func buy_fertilizer(_ sender: Any) {
+        if (allPlants[indexOfPlant].age! < 10) {
+            let addGardenPopUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID")as! IncubatorPopUpViewController
+            self.addChild(addGardenPopUpVC)
+            addGardenPopUpVC.view.frame = self.view.frame
+            addGardenPopUpVC.alertLable.text = "Successfully bought fertilizer!"
+            self.view.addSubview(addGardenPopUpVC.view)
+            addGardenPopUpVC.didMove(toParent: self)
+            allPlants[indexOfPlant].age = 10
+            displayPlantInfo(myPlant: allPlants[indexOfPlant])
+            wallet -= 4
+        }
+    }
+    
     //adds a fully mature plant to garden
     @IBAction func add_garden(_ sender: Any) {
         let addGardenPopUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID")as! IncubatorPopUpViewController
@@ -150,6 +167,10 @@ class GameViewController: UIViewController {
             print(error)
         }
         walletAudio.play()
+<<<<<<< HEAD
+
+=======
+>>>>>>> 45f37edcf4fdcdd80446528682f66381c522c9fe
         
         wallet += allPlants[indexOfPlant].price
         
@@ -261,30 +282,44 @@ class GameViewController: UIViewController {
             self.gardenPlants = decodedGardenPlants
         }
         //self.indexOfPlant = defaults.integer(forKey: "myIndex")
+        
         self.wallet = defaults.integer(forKey: "myWallet")
-        //self.ageArray = defaults.object(forKey: "ageArray") as? [Int] ?? [Int]()
-        //wallet = 50
-        //hardcoded test plants
-        allPlants.removeAll()
-        gardenPlants.removeAll()
 
-//       allPlants.append(Rose())
-//        allPlants.append(Rose())
-//        allPlants.append(Rose())
-//        allPlants.append(Sunflower())
+        //self.ageArray = defaults.object(forKey: "ageArray") as? [Int] ?? [Int]()
+        
+        
+        ////////////////////////////////////////hardcoded test plants/////////////////////////////////
+        //wallet = 100
+        //allPlants.removeAll()
+//        gardenPlants.removeAll()
+//        
+//        let encodedGardenPlants: Data = NSKeyedArchiver.archivedData(withRootObject: gardenPlants)
+//        defaults.set(encodedGardenPlants, forKey: "defaultGardenPlants")
+//        defaults.synchronize()
+
+        //allPlants.append(Rose())
+        //allPlants.append(Sunflower())
 //        allPlants.append(Lilac())
 //        allPlants.append(Cactus())
 //        allPlants.append(Rose())
 //        allPlants.append(Cactus())
 //
 //
+<<<<<<< HEAD
+//        allPlants[0].age = 10
+//        allPlants[1].age = 10
+//       allPlants[2].age = 10
+        //allPlants[0].current_water = 10
+        ////////////////////////////////////////hardcoded test plants/////////////////////////////////
+=======
+>>>>>>> 45f37edcf4fdcdd80446528682f66381c522c9fe
 
-     
         
         //calculates time away and ages plants
         if let date2 = defaults.object(forKey: "date") as? Date {
             let seconds = Date().timeIntervalSince(date2)
-            let minutes = Int(seconds)/15
+            let minutes = Int(seconds)/3
+            
             time_away.text = "Time away: " + String(Int(minutes)) + " days"
             
             for plant in allPlants{

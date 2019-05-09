@@ -6,13 +6,15 @@
 //  Copyright © 2019 nyu.edu. All rights reserved.
 //
 
-
+import AVFoundation
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var walletAudio = AVAudioPlayer()
     var coins = 0
     var plantNum = 4
+    var life = 3
     let coinLabel = SKLabelNode(text: "Coins: 0")
     
     let player = SKSpriteNode(imageNamed: "stanley")
@@ -131,6 +133,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 spawnExplosion(spawnPosition: body2.node!.position)
             }
             
+            life -= 1
+            
+            if life == 0{
+                runGameOver()
+            }
             
             body2.node?.removeFromParent()
             let scaleOut = SKAction.scale(to: 0, duration: 0.1)
@@ -138,6 +145,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             
             let deathSequence = SKAction.sequence([scaleIn, scaleOut, scaleIn, scaleOut, scaleIn, scaleOut, scaleIn])
+            
             
             player.run(deathSequence)
             playerStunned = false
@@ -214,6 +222,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coin.zPosition = 3
         coin.setScale(0)
         self.addChild(coin)
+        let cashSound = Bundle.main.path(forResource: "Chaching", ofType: "mp3")
+        do {
+            walletAudio = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: cashSound!))
+        } catch {
+            print(error)
+        }
+        walletAudio.play()
         
         let scaleIn = SKAction.scale(to: 0.3, duration: 0.3)
         let fadeOut = SKAction.fadeOut(withDuration: 0.3)
@@ -294,7 +309,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bug.physicsBody!.contactTestBitMask = PhysicsCategories.Player | PhysicsCategories.Spray | PhysicsCategories.Plant
         self.addChild(bug)
         
-        let moveBug = SKAction.move(to: endPoint, duration: 3)
+        let moveBug = SKAction.move(to: endPoint, duration: 2)
         let deleteBug = SKAction.removeFromParent()
         let bugSequence = SKAction.sequence([moveBug, deleteBug])
         bug.run(bugSequence)
