@@ -308,7 +308,6 @@
             </objects>
             <point key="canvasLocation" x="-481" y="814"/>
         </scene>
-
         <!--View Controller-->
         <scene sceneID="8l9-Xl-Fcg">
             <objects>
@@ -395,8 +394,6 @@
             </objects>
             <point key="canvasLocation" x="-1571.0144927536232" y="34.239130434782609"/>
         </scene>
-
-
         <!--Garden View Controller-->
         <scene sceneID="g29-Gv-wVp">
             <objects>
@@ -421,7 +418,6 @@
                                     <segue destination="4PY-dF-9Z6" kind="unwind" unwindAction="cancel:" id="aDF-fs-JRe"/>
                                 </connections>
                             </button>
-<<<<<<< HEAD
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPf-5J-vl4">
                                 <rect key="frame" x="115" y="610" width="185" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -434,9 +430,6 @@
                                     <segue destination="zr2-fE-S69" kind="show" identifier="plantGameSegue" id="yOR-Jd-m4L"/>
                                 </connections>
                             </button>
-=======
-
->>>>>>> 45f37edcf4fdcdd80446528682f66381c522c9fe
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2oA-IV-aYG">
                                 <rect key="frame" x="60" y="113" width="295" height="443"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -468,18 +461,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-<<<<<<< HEAD
-=======
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPf-5J-vl4">
-                                <rect key="frame" x="115" y="600" width="185" height="78"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <state key="normal" title="Start Game">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="zr2-fE-S69" kind="show" identifier="plantGameSegue" id="yOR-Jd-m4L"/>
-
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pqn-Ks-Uig">
                                 <rect key="frame" x="275" y="665" width="104" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -489,22 +470,14 @@
                                 </state>
                                 <connections>
                                     <action selector="takePhoto:" destination="5K7-CW-wHD" eventType="touchUpInside" id="YMd-Pf-HEr"/>
-
                                 </connections>
                             </button>
->>>>>>> 45f37edcf4fdcdd80446528682f66381c522c9fe
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="j1L-I3-wwe"/>
                     </view>
                     <connections>
-<<<<<<< HEAD
                         <outlet property="collectionView" destination="2oA-IV-aYG" id="LwU-0B-4j6"/>
-=======
-                        <outlet property="plant_image" destination="Cai-IR-mfo" id="ac6-ZF-egR"/>
-                        <outlet property="plant_name" destination="rAu-FM-0Dt" id="ibH-ke-WLv"/>
-                        <outlet property="plant_number" destination="ttz-pB-OMN" id="VaO-w5-I6d"/>
->>>>>>> 45f37edcf4fdcdd80446528682f66381c522c9fe
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PgQ-hm-MlC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -616,16 +589,11 @@
         <image name="output-onlinepngtools" width="100" height="100"/>
         <image name="plant2" width="512" height="512"/>
         <image name="plant3" width="512" height="512"/>
-
         <image name="seed" width="648" height="182"/>
-<<<<<<< HEAD
-=======
-        <image name="sky" width="153.60000610351562" height="86.400001525878906"/>
-
->>>>>>> 45f37edcf4fdcdd80446528682f66381c522c9fe
         <image name="sky" width="640" height="360"/>
         <image name="store" width="948" height="1682"/>
         <image name="store_button" width="1024" height="1024"/>
+        <image name="sunflower-seed-clipart-1" width="500" height="500"/>
         <image name="watering_can" width="1024" height="1024"/>
     </resources>
 </document>

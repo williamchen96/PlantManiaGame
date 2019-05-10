@@ -26,10 +26,7 @@ class GameViewController: UIViewController {
     var audioPlayer = AVAudioPlayer()
     var waterAudio = AVAudioPlayer()
     var walletAudio = AVAudioPlayer()
-<<<<<<< HEAD
-=======
 
->>>>>>> 45f37edcf4fdcdd80446528682f66381c522c9fe
     
    
     @IBOutlet weak var incubator_view: UIView!
@@ -167,10 +164,8 @@ class GameViewController: UIViewController {
             print(error)
         }
         walletAudio.play()
-<<<<<<< HEAD
 
-=======
->>>>>>> 45f37edcf4fdcdd80446528682f66381c522c9fe
+
         
         wallet += allPlants[indexOfPlant].price
         
@@ -305,15 +300,11 @@ class GameViewController: UIViewController {
 //        allPlants.append(Cactus())
 //
 //
-<<<<<<< HEAD
 //        allPlants[0].age = 10
 //        allPlants[1].age = 10
 //       allPlants[2].age = 10
         //allPlants[0].current_water = 10
         ////////////////////////////////////////hardcoded test plants/////////////////////////////////
-=======
->>>>>>> 45f37edcf4fdcdd80446528682f66381c522c9fe
-
         
         //calculates time away and ages plants
         if let date2 = defaults.object(forKey: "date") as? Date {
