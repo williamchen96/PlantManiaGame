@@ -27,6 +27,10 @@ class GameViewController: UIViewController {
     var waterAudio = AVAudioPlayer()
     var walletAudio = AVAudioPlayer()
 
+    var roseRevenue: Int = 0
+    var cactusRevenue: Int = 0
+    var lilacRevenue: Int = 0
+    var sunflowerRevenue: Int = 0
     
    
     @IBOutlet weak var incubator_view: UIView!
@@ -153,7 +157,9 @@ class GameViewController: UIViewController {
         let addGardenPopUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID")as! IncubatorPopUpViewController
         self.addChild(addGardenPopUpVC)
         addGardenPopUpVC.view.frame = self.view.frame
-        addGardenPopUpVC.alertLable.text = "Successfully sold plant! You earned " + String(allPlants[indexOfPlant].price) + " coins"
+        var plantPrice: Int = 0
+        plantPrice = allPlants[indexOfPlant].price + 1
+        addGardenPopUpVC.alertLable.text = "Successfully sold plant! You earned " + String(plantPrice) + " coins"
         self.view.addSubview(addGardenPopUpVC.view)
         addGardenPopUpVC.didMove(toParent: self)
         
@@ -165,9 +171,18 @@ class GameViewController: UIViewController {
         }
         walletAudio.play()
 
-
+        //saving plant revenue info
+        if allPlants[indexOfPlant].plant_name == "Rose" {
+            roseRevenue += allPlants[indexOfPlant].price + 1
+        } else if allPlants[indexOfPlant].plant_name == "Cactus" {
+            cactusRevenue += allPlants[indexOfPlant].price + 1
+        } else if allPlants[indexOfPlant].plant_name == "Sunflower" {
+            sunflowerRevenue += allPlants[indexOfPlant].price + 1
+        } else if allPlants[indexOfPlant].plant_name == "Lilac" {
+            lilacRevenue += allPlants[indexOfPlant].price + 1
+        }
         
-        wallet += allPlants[indexOfPlant].price
+        wallet += allPlants[indexOfPlant].price + 1
         
         allPlants.remove(at: indexOfPlant)
         if (indexOfPlant > (allPlants.count - 1)){
@@ -187,6 +202,10 @@ class GameViewController: UIViewController {
         
         //defaults.set(indexOfPlant, forKey: "myIndex")
         defaults.set(wallet, forKey: "myWallet")
+        defaults.set(roseRevenue, forKey: "roseRevenue")
+        defaults.set(cactusRevenue, forKey: "cactusRevenue")
+        defaults.set(lilacRevenue, forKey: "lilacRevenue")
+        defaults.set(sunflowerRevenue, forKey: "sunflowerRevenue")
         
         //update the user default all plants array
         let encodedAllPlants: Data = NSKeyedArchiver.archivedData(withRootObject: allPlants)
@@ -279,12 +298,16 @@ class GameViewController: UIViewController {
         //self.indexOfPlant = defaults.integer(forKey: "myIndex")
         
         self.wallet = defaults.integer(forKey: "myWallet")
+        self.roseRevenue = defaults.integer(forKey: "roseRevenue")
+        self.cactusRevenue = defaults.integer(forKey: "cactusRevenue")
+        self.lilacRevenue = defaults.integer(forKey: "lilacRevenue")
+        self.sunflowerRevenue = defaults.integer(forKey: "sunflowerRevenue")
 
         //self.ageArray = defaults.object(forKey: "ageArray") as? [Int] ?? [Int]()
         
         
         ////////////////////////////////////////hardcoded test plants/////////////////////////////////
-        //wallet = 100
+        //wallet = 50
         //allPlants.removeAll()
 //        gardenPlants.removeAll()
 //        
@@ -309,7 +332,7 @@ class GameViewController: UIViewController {
         //calculates time away and ages plants
         if let date2 = defaults.object(forKey: "date") as? Date {
             let seconds = Date().timeIntervalSince(date2)
-            let minutes = Int(seconds)/3
+            let minutes = Int(seconds)/60
             
             time_away.text = "Time away: " + String(Int(minutes)) + " days"
             
@@ -357,6 +380,10 @@ class GameViewController: UIViewController {
             let controller = segue.destination as! GardenViewController
             controller.garden_plants = self.gardenPlants
             controller.wallet = self.wallet
+            controller.cactusRevenue = self.cactusRevenue
+            controller.roseRevenue = self.roseRevenue
+            controller.lilacRevenue = self.lilacRevenue
+            controller.sunflowerRevenue = self.sunflowerRevenue
         }
         
         else{
