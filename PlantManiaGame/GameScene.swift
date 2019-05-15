@@ -268,8 +268,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func fireSpray(){
         
-        let spray = SKSpriteNode(imageNamed: "bullet")
-        spray.setScale(1)
+//        let spray = SKSpriteNode(imageNamed: "bullet")
+//        spray.setScale(1)
+        let spray = SKSpriteNode(imageNamed: "spray")
+        spray.setScale(0.2)
+
         spray.position = player.position
         spray.zPosition = 1
         spray.physicsBody = SKPhysicsBody(rectangleOf: spray.size)
@@ -298,8 +301,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let startPoint = CGPoint(x: randomStartX, y: self.size.height * 1.2)
         let endPoint = CGPoint(x: randomEndX, y: self.size.height * 0.1)
         
-        let bug = SKSpriteNode(imageNamed: "enemyShip")
-        bug.setScale(0.7)
+//        let bug = SKSpriteNode(imageNamed: "enemyShip")
+//        bug.setScale(0.7)
+        let bug = SKSpriteNode(imageNamed: "bug")
+        bug.setScale(0.2)
         bug.position = startPoint
         bug.zPosition = 2
         bug.physicsBody = SKPhysicsBody(rectangleOf: bug.size)
@@ -309,7 +314,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bug.physicsBody!.contactTestBitMask = PhysicsCategories.Player | PhysicsCategories.Spray | PhysicsCategories.Plant
         self.addChild(bug)
         
-        let moveBug = SKAction.move(to: endPoint, duration: 2)
+        let moveBug = SKAction.move(to: endPoint, duration: 1.5)
         let deleteBug = SKAction.removeFromParent()
         let bugSequence = SKAction.sequence([moveBug, deleteBug])
         bug.run(bugSequence)
