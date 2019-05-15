@@ -14,13 +14,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var walletAudio = AVAudioPlayer()
     var coins = 0
     var plantNum = 4
-    var life = 3
+    //var life = 3
     let coinLabel = SKLabelNode(text: "Coins: 0")
     
     let player = SKSpriteNode(imageNamed: "stanley")
     var plantArray = Array<SKSpriteNode>()
     
     var playerStunned = false
+    
+    var gameOver = SKLabelNode(text: "Game Over!")
     
     //let spraySound = SKAction.playSoundFileNamed(<#T##soundFile: String##String#>, waitForCompletion: false)
     
@@ -109,6 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(plant)
         }
         
+    
         startGame()
         
     }
@@ -133,13 +136,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 spawnExplosion(spawnPosition: body2.node!.position)
             }
             
-            life -= 1
-            
-            if life == 0{
-                runGameOver()
-            }
+//            life -= 1
+//
+//            if life == 0{
+//                runGameOver()
+//            }
             
             body2.node?.removeFromParent()
+            playerStunned = true
             let scaleOut = SKAction.scale(to: 0, duration: 0.1)
             let scaleIn = SKAction.scale(to: 0.3, duration: 0.1)
             
@@ -201,6 +205,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func runGameOver(){
         
+//        gameOver.isHidden = false
+        
         self.removeAllActions()
         self.enumerateChildNodes(withName: "Spray"){
             spray, stop in
@@ -213,6 +219,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             bug.removeAllActions()
         }
+        
+        gameOver.fontSize = 100
+        gameOver.fontColor = SKColor.black
+        gameOver.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.center
+        gameOver.position = CGPoint(x: self.size.width * 0.5, y: self.size.height * 0.7)
+        gameOver.zPosition = 100
+        self.addChild(gameOver)
+        
         
     }
     
