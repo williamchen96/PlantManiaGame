@@ -307,7 +307,8 @@ class GameViewController: UIViewController {
         
         
         ////////////////////////////////////////hardcoded test plants/////////////////////////////////
-        //wallet = 50
+        //
+        wallet = 100
         //allPlants.removeAll()
 //        gardenPlants.removeAll()
 //        
