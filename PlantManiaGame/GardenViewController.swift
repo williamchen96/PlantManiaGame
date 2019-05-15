@@ -15,6 +15,14 @@ class GardenViewController: UIViewController, UICollectionViewDelegate, UICollec
     var current_index = 0
     var wallet = 0
     
+    var roseCount = 0
+    var lilacCount = 0
+    var sunflowerCount = 0
+    var cactusCount = 0
+    var roseRevenue = 0
+    var lilacRevenue = 0
+    var sunflowerRevenue = 0
+    var cactusRevenue = 0
     
     //Collection View
     @IBOutlet weak var collectionView: UICollectionView!
@@ -42,9 +50,28 @@ class GardenViewController: UIViewController, UICollectionViewDelegate, UICollec
         //Collection View
         collectionView.delegate = self
         collectionView.dataSource = self
-        
+        updatePlantInfo()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func updatePlantInfo() {
+        roseCount = 0
+        lilacCount = 0
+        sunflowerCount = 0
+        cactusCount = 0
+        
+        for plant in garden_plants {
+            if plant.plant_name == "Rose" {
+                roseCount += 1
+            } else if plant.plant_name == "Cactus" {
+                cactusCount += 1
+            } else if plant.plant_name == "Sunflower" {
+                sunflowerCount += 1
+            } else if plant.plant_name == "Lilac" {
+                lilacCount += 1
+            }
+        }
     }
     
     
@@ -62,13 +89,27 @@ class GardenViewController: UIViewController, UICollectionViewDelegate, UICollec
         if segue.identifier == "plantGameSegue" {
             let controller = segue.destination as! PlantGameViewController
             controller.wallet = self.wallet
+        } else if segue.identifier == "plantInfoSegue" {
+            if let plantInfoVC = segue.destination as? PlantInfoViewController {
+                //Some property on ChildVC that needs to be set
+                plantInfoVC.rose_number = self.roseCount
+                plantInfoVC.sunflower_number = self.sunflowerCount
+                plantInfoVC.cactus_number = self.cactusCount
+                plantInfoVC.lilac_number = self.lilacCount
+                
+                plantInfoVC.rose_rev = self.roseRevenue
+                plantInfoVC.cactus_rev = self.cactusRevenue
+                plantInfoVC.sunflower_rev = self.sunflowerRevenue
+                plantInfoVC.lilac_rev = self.lilacRevenue
+            }
         }
         
     }
     
-    @IBAction func cancel(_ unwindSegue: UIStoryboardSegue) {
-    }
 
+
+    
+    
     /*
     // MARK: - Navigation
 
